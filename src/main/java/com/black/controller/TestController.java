@@ -1,14 +1,11 @@
 package com.black.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.black.controller.testbean.RetBean;
-import com.black.controller.testbean.TestBean;
 import com.black.model.FctCase;
 import com.black.model.FctOrder;
 import com.black.model.FctOrderPage;
 import com.black.service.FctCaseService;
 import com.black.service.FctOrderService;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
