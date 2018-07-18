@@ -25,6 +25,11 @@ public class FctCaseServiceImpl implements FctCaseService {
     }
 
     @Override
+    public int insertList(List<FctCase> list) {
+        return fctCaseMapper.insertList(list);
+    }
+
+    @Override
     public FctCase selectByPrimaryKey(Long id) {
         return fctCaseMapper.selectByPrimaryKey(id);
     }

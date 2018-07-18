@@ -47,6 +47,26 @@
       #{customercompanyaddress,jdbcType=VARCHAR}, #{contractname,jdbcType=VARCHAR}, #{contractrelationship,jdbcType=VARCHAR}, 
       #{contractmobilephone,jdbcType=VARCHAR}, #{remarks,jdbcType=LONGVARCHAR})
   </insert>
+
+  <insert id="insertList" parameterType="java.util.List">
+    <selectKey resultType ="java.lang.Integer" keyProperty= "id" order= "AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey >
+    insert into fct_customercontract (CustomerID, CustomerName, IDCardNumber,
+    CustomerMobilePhone, CustomerTelPhone,
+    CustomerHomeAddress, CustomerFamilyAddress,
+    CustomerCompanyAddress, ContractName, ContractRelationShip,
+    ContractMobilePhone, Remarks)
+    values
+    <foreach collection ="list" item="item" index= "index" separator =",">
+      (#{item.customerid,jdbcType=VARCHAR}, #{item.customername,jdbcType=VARCHAR}, #{item.idcardnumber,jdbcType=VARCHAR},
+      #{item.customermobilephone,jdbcType=VARCHAR}, #{item.customertelphone,jdbcType=VARCHAR},
+      #{item.customerhomeaddress,jdbcType=VARCHAR}, #{item.customerfamilyaddress,jdbcType=VARCHAR},
+      #{item.customercompanyaddress,jdbcType=VARCHAR}, #{item.contractname,jdbcType=VARCHAR}, #{item.contractrelationship,jdbcType=VARCHAR},
+      #{item.contractmobilephone,jdbcType=VARCHAR}, #{item.remarks,jdbcType=LONGVARCHAR})
+    </foreach >
+  </insert>
+
   <update id="updateByPrimaryKey" parameterType="com.black.model.FctCustomercontract" >
     <!--
       WARNING - @mbggenerated

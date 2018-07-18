@@ -24,6 +24,11 @@ public class FctCustomercontractServiceImpl implements FctCustomercontractServic
     }
 
     @Override
+    public int insertList(List<FctCustomercontract> list) {
+        return fctCustomercontractMapper.insertList(list);
+    }
+
+    @Override
     public FctCustomercontract selectByPrimaryKey(Long id) {
         return fctCustomercontractMapper.selectByPrimaryKey(id);
     }

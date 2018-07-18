@@ -56,6 +56,29 @@
       #{overduedays,jdbcType=INTEGER}, #{overdueflag,jdbcType=INTEGER}, #{remarks,jdbcType=LONGVARCHAR}
       )
   </insert>
+
+  <insert id="insertList" parameterType="java.util.List">
+    <selectKey resultType ="java.lang.Integer" keyProperty= "id" order= "AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey >
+    insert into fct_case (CaseID, CompanyID, CompanyName,
+    CustomerID, CustomerName, IDCardNumber,
+    CustomerMobilePhone, CustomerTelPhone,
+    ProductID, ProductName, ContractDate,
+    ContractMoney, OverDueStartDate, OverDueMoney,
+    OverDueDays, OverDueFlag, Remarks
+    ) values
+    <foreach collection ="list" item="item" index= "index" separator =",">
+      (#{item.caseid,jdbcType=VARCHAR}, #{item.companyid,jdbcType=VARCHAR}, #{item.companyname,jdbcType=VARCHAR},
+      #{item.customerid,jdbcType=VARCHAR}, #{item.customername,jdbcType=VARCHAR}, #{item.idcardnumber,jdbcType=VARCHAR},
+      #{item.customermobilephone,jdbcType=VARCHAR}, #{item.customertelphone,jdbcType=VARCHAR},
+      #{item.productid,jdbcType=VARCHAR}, #{item.productname,jdbcType=VARCHAR}, #{item.contractdate,jdbcType=DATE},
+      #{item.contractmoney,jdbcType=DECIMAL}, #{item.overduestartdate,jdbcType=DATE}, #{item.overduemoney,jdbcType=DECIMAL},
+      #{item.overduedays,jdbcType=INTEGER}, #{item.overdueflag,jdbcType=INTEGER}, #{item.remarks,jdbcType=LONGVARCHAR}
+      )
+    </foreach >
+  </insert>
+
   <update id="updateByPrimaryKey" parameterType="com.black.model.FctCase" >
     <!--
       WARNING - @mbggenerated
